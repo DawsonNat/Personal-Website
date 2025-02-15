@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor's Home Page</title>
+    <link rel="stylesheet" href="homestyles.css">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+</head>
+<body class="light-mode">
+    <!-- Intro Overlay -->
+    <div class="intro-overlay">
+        <h1>Victor</h1>
+        <button id="enter-site">Click to Enter</button>
+        <button id="overlay-toggle">
+            <img src="img/light.png" alt="Toggle Light/Dark Mode">
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <div class="avatar">
+                <img src="img/logo.jpg" alt="Avatar">
+            </div>
+        <h1>Welcome to Victor's Personal Website</h1>
+        </div>
+        <button id="mode-toggle">
+            <img src="img/light.png" alt="Toggle Light/Dark Mode">
+        </button>
+    </header>
+
+    <!-- Navigation -->
+    <div class="nav-container">
+        <a href="home.html" class="nav-block" data-description="This is Home page.">Home</a>
+        <a href="about.html" class="nav-block" data-description="Learn more about me here.">About</a>
+        <a href="quiz.html" class="nav-block" data-description="Take a fun quiz here!">Quiz</a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="section-container">
+        <section>
+            <h2>Brief Introduction</h2>
+            <p>Hello! My name is Junyi Lu. I am a student from Aberdeen Institute of Data Science and Artificial Intelligence, South China Normal University. 
+                My majority is Computer Science. I am active in student organisations and wear several hats. These include class representative of Software Engineering 1, 
+                senior member of JI's Student Union, leader of the Art Troupe Instrumental Band, and dormitory header of Room H132. In my spare time, I won't only focus 
+                on my study, but also play saxophone and take part in various activities on campus. Welcome to my website where you can learn more about me and take a fun quiz!</p>
+        </section>
+    </div>
+
+    <!-- Image Carousel -->
+    <div class="image-carousel">
+        <div class="carousel-track">
+            <div class="carousel-slide"><img src="img/p1.jpg" alt="Photo 1"></div>
+            <div class="carousel-slide"><img src="img/p4.jpg" alt="Photo 4"></div>
+            <div class="carousel-slide"><img src="img/p5.jpg" alt="Photo 5"></div>
+            <div class="carousel-slide"><img src="img/p6.jpg" alt="Photo 6"></div>
+            <div class="carousel-slide"><img src="img/p8.jpg" alt="Photo 8"></div>
+            <div class="carousel-slide"><img src="img/p9.jpg" alt="Photo 9"></div>
+        </div>
+    </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Dawson. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Show intro overlay and hide main content initially
+        document.querySelector('header').style.display = 'none';
+        document.querySelector('.nav-container').style.display = 'none';
+        document.querySelector('main').style.display = 'none';
+        document.querySelector('footer').style.display = 'none';
+
+        // Handle enter site button click
+        document.getElementById('enter-site').addEventListener('click', function() {
+            document.querySelector('.intro-overlay').style.opacity = '0';
+            setTimeout(function() {
+                document.querySelector('.intro-overlay').style.display = 'none';
+                document.querySelector('header').style.display = 'flex';
+                document.querySelector('.nav-container').style.display = 'flex';
+                document.querySelector('main').style.display = 'block';
+                document.querySelector('footer').style.display = 'block';
+                setTimeout(function() {
+                    document.querySelector('header').style.opacity = '1';
+                    document.querySelector('.nav-container').style.opacity = '1';
+                    document.querySelector('main').style.opacity = '1';
+                    document.querySelector('footer').style.opacity = '1';
+                }, 50);
+            }, 1000);
+        });
+
+        // Toggle light/dark mode for intro overlay
+        document.getElementById('overlay-toggle').addEventListener('click', function() {
+            var body = document.body;
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+            body.classList.toggle('overlay-dark-mode'); 
+        });
+
+        // Toggle light/dark mode for main content
+        document.getElementById('mode-toggle').addEventListener('click', function() {
+            var body = document.body;
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+        });
+
+        //Handle navigation link clicks
+        document.addEventListener('DOMContentLoaded', function() {
+            var links = document.querySelectorAll('.nav-container a');
+
+            links.forEach(function(link) {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var targetPage = link.getAttribute('href');
+                    document.querySelector('main').style.opacity = '0';
+                    setTimeout(function() {
+                        window.location.href = targetPage;
+                    }, 500);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor's Quiz Page</title>
+    <link rel="stylesheet" href="quizstyles.css">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+</head>
+<body class="light-mode">
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <div class="avatar">
+                <img src="img/logo.jpg" alt="Avatar">
+            </div>
+            <h1>Quiz</h1>
+        </div>
+
+        <!-- Navigation and Mode-->
+        <div class="header-buttons">
+            <nav class="nav-bar">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="quiz.html" class="active">Quiz</a></li>
+                </ul>
+            </nav>
+            <button id="mode-toggle">
+                <img src="img/light.png" alt="Toggle Light/Dark Mode">
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="quiz-container">
+            <div id="start-container">
+                <input type="text" id="name-input" placeholder="Enter your name">
+                <button id="start-quiz">Start Quiz</button>
+            </div>
+                <button id="end-quiz" class="hide">Try Again?</button>
+            <div id="question-container" class="hide">
+                <div id="question-indicator"></div>
+                <div id="question"></div>
+                <div id="options-container"></div>
+            </div>
+            <div id="timer-container" class="hide">
+                <div id="timer"></div>
+            </div>
+            <div id="result-container" class="hide">
+                <div id="result"></div>
+            </div>
+            <!-- Leaderboard -->            
+            <div id="leaderboard-container">
+                <h1>Leaderboard</h1>
+                <table id="leaderboard-table">
+                  <thead>
+                    <tr>
+                      <th>Rank</th>
+                      <th>Name</th>
+                      <th>Correct Answers</th>
+                      <th>Time Taken</th>
+                    </tr>
+                  </thead>
+                  <tbody id="leaderboard-body">
+                  </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Victor. All rights reserved.</p>
+    </footer>
+
+    <!-- Import js file -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="quiz.js"></script>
+</body>
+</html>
